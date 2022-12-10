@@ -54,20 +54,24 @@ public class login extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
         txtpass.setBackground(new java.awt.Color(204, 255, 204));
+        txtpass.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 2, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username:");
 
         txtuser.setBackground(new java.awt.Color(204, 255, 204));
+        txtuser.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 2, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password:");
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setBackground(new java.awt.Color(0, 51, 153));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,9 +90,8 @@ public class login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtuser, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                        .addComponent(txtpass)))
+                    .addComponent(txtuser, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(txtpass))
                 .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,8 +158,8 @@ public class login extends javax.swing.JFrame {
     {                   
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankproject","root","");
-            insert = con1.prepareStatement("SELECT * FROM user WHERE username=? and password=? ");                           
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/MultiBank","root","");
+            insert = con1.prepareStatement("SELECT * FROM Users WHERE Username=? and Password=? ");                           
             insert.setString(1, txtuser.getText());
             insert.setString(2,txtpass.getText());
             rs1=insert.executeQuery();
